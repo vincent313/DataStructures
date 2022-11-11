@@ -22,13 +22,25 @@ public class SingleLikedListTest {
 
     @Test
     public void deleteTest(){
+        //delete exist node
+        list.deleteByIndex(319);
+        list.showList();
+        list.deleteByIndex(1102);
+        list.showList();
+        //delete no exist node
+        list.deleteByIndex(1102);
+        //delete last node
         list.deleteByIndex(313);
         list.showList();
+        //delete node from empty list
+        list.deleteByIndex(313);
 
-        list.deleteByIndex(3);
-        list.showList();
+
+
     }
 
+    /*
+    * given node exist or doesn't exist*/
     @Test
     public void queryTest(){
         String result=list.query(313);

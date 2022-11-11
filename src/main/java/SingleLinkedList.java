@@ -11,7 +11,10 @@ public class SingleLinkedList {
         size=0;
     }
 
-    //insert node
+    /*
+    insert node, if size == 0 -> head and tail = new node
+    otherwise add new node to tail
+    * **/
     public void insert(int index,String value){
         ListNode node=new ListNode(index,value);
         if (size==0){
@@ -24,7 +27,11 @@ public class SingleLinkedList {
             size++;
         }
     }
-// find node and insert new node
+/*find node and insert new node
+* if linked list is empty or given index dont exist-> console log given node index dont exist
+* otherwise , insert new node after given node
+*
+* */
     public void insert(int insertNode,int index, String value){
         //list is empty
         if (size==0){
@@ -53,6 +60,7 @@ public class SingleLinkedList {
     }
 
     public void deleteByIndex(int index){
+
         if(size==0){
             System.out.println("delete fail ,list is empty");
             return;
@@ -68,8 +76,10 @@ public class SingleLinkedList {
             }
             head=current.next;
             size--;
+            return;
         }
 
+        //iterate list , find given node then delete this node
         while(current.next!=null){
             if(current.next.index==index){
                 if(current.next==tail){
@@ -82,7 +92,7 @@ public class SingleLinkedList {
                 current=current.next;
             }
         }
-
+        //if the given node no exist in the linked list
         System.out.println("cant find delete node");
         return;
 
@@ -140,6 +150,10 @@ public class SingleLinkedList {
     }
 
     public void showList(){
+        if (head==null){
+            System.out.println("list is empty");
+            return;
+        }
         ListNode current=head;
         while(current!=tail){
             System.out.println(current.toString());
@@ -162,9 +176,9 @@ public class SingleLinkedList {
         boolean nextIsNull(){
              if (next==null){
                  return true;
-             }else{
-                 return false;
              }
+             return false;
+
         }
 
         void addNext(ListNode node){
