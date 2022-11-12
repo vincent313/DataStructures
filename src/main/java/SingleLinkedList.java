@@ -11,10 +11,10 @@ public class SingleLinkedList {
         size=0;
     }
 
-    /*
+    /**
     insert node, if size == 0 -> head and tail = new node
     otherwise add new node to tail
-    * **/
+    */
     public void insert(int index,String value){
         ListNode node=new ListNode(index,value);
         if (size==0){
@@ -27,11 +27,11 @@ public class SingleLinkedList {
             size++;
         }
     }
-/*find node and insert new node
-* if linked list is empty or given index dont exist-> console log given node index dont exist
-* otherwise , insert new node after given node
-*
-* */
+/**
+ *find node and insert new node
+ if linked list is empty or given index dont exist-> console log given node index dont exist
+ otherwise , insert new node after given node
+*/
     public void insert(int insertNode,int index, String value){
         //list is empty
         if (size==0){
@@ -162,7 +162,7 @@ public class SingleLinkedList {
         System.out.println(current.toString());
         System.out.println("current size "+ getSize());
     }
-    private class ListNode{
+    private static class ListNode{
         private int index;
         private String value;
         private ListNode next;

@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Array;
+
 public class SingleLikedListTest {
     SingleLinkedList list;
 
@@ -43,6 +45,7 @@ public class SingleLikedListTest {
     * given node exist or doesn't exist*/
     @Test
     public void queryTest(){
+
         String result=list.query(313);
         System.out.println(result);
         result=list.query(3);
@@ -59,5 +62,18 @@ public class SingleLikedListTest {
         }
 
         list.showList();
+    }
+
+    @Test
+    public void testplus(){
+        int[] ab=new int[3];
+        int x=2;
+        ab[x]=2;
+        ab[--x]=2;
+
+        System.out.println(ab[0]);
+        System.out.println(ab[1]);
+        System.out.println(ab[2]);
+
     }
 }
