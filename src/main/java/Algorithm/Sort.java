@@ -45,5 +45,48 @@ public class Sort {
 
 		return array;
 	}
+
+	public void quickSort(int[] array,int left,int right){
+	if (right -left<=0){return;}
+	int pivotIndex=getPivotIndex(array, left, right);
+
+	quickSort(array,left,pivotIndex-1);
+	quickSort(array,pivotIndex+1,right);
+	}
+
+	/**
+	 * 1. Set index bounds, set first element as pivot.
+	 * 2. If low pointer not out of bounds and the array[low] is smaller than pivot,pointer go next index until array[low] >= pivot ,or index reach right bounds.
+	 * 3. high pointer....
+	 * 4. if low pointer didn't meet high pointer, swap the value in array[low] array[high]
+	 * 5. if two pointer meet or cross each other. Means pointer traversed whole array.
+	 * 6. swap array[left] and swap[high] ( if choose array[right] as pivot, swap array[low] and array[right])
+	 * */
+	private int getPivotIndex(int[] array,int left,int right){
+		int i=left;
+		int j=right;
+		int pivot=array[left];
+		while(true){
+			while (i<right&&array[i]<=pivot){
+				i++;
+			}
+			while(j>left&&array[j]>pivot){
+				j--;
+			}
+
+			if (i>=j){break;}
+			swap(array,i,j);
+		}
+		swap(array,left,j);
+		return j;
+	}
+
+	private void swap(int[] array,int index1,int index2){
+		int temp=array[index1];
+		array[index1]=array[index2];
+		array[index2]=temp;
+		return;
+	}
+
 }
 
