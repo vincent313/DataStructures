@@ -15,12 +15,12 @@ public class SortTest {
 	Sort sort;
 @Before
 	public void generateArray(){
-		size=100;
+		size=100000;
 		sort=new Sort();
 		Random random=new Random();
 		array=new int[size];
 		for (int i=0;i<size;i++){
-			int z= random.nextInt(100);
+			int z= random.nextInt(100000);
 			array[i]=z;
 		}
 	}
@@ -36,6 +36,15 @@ public class SortTest {
 	@Test
 	public void quickSortTest(){
 	sort.quickSort(array,0, array.length-1);
+		for (int i:array){
+			System.out.print(i+" ");
+		}
+	}
+
+	@Test
+	public void mergeSortTest(){
+
+	sort.mergeSort(array,0,array.length-1);
 		for (int i:array){
 			System.out.print(i+" ");
 		}

@@ -88,5 +88,61 @@ public class Sort {
 		return;
 	}
 
+	/**
+	 * Divide array to two sub array;
+	 * Recursive call ,until only one element in sub array;
+	 * Merge two array
+	 * */
+	public void mergeSort(int[] array,int left,int right){
+		if (left>=right){return;}
+		int mid=(right+left)/2;
+		mergeSort(array,left,mid);
+		mergeSort(array,mid+1,right);
+		merge(array,left,mid,right);
+	}
+
+	/**
+	 * 1,Two pointer, low is in the beginning of array(left), high in the middle of array
+	 * 2,New int[] array as temp container.
+	 * 3,if low pointer cross array[mid], pick element from high pointer,until high pointer cross right.
+	 * 4.if high pointer cross array[right],pick element from low pointer,until low pointer cross array[mid]
+	 * 5.if array[low]<array[high],pick element from array[low],low pointer move to right.
+	 * 6....as above
+	 * 7.finish loop,copy tempArray to array
+	 * 8.return
+	 * */
+	private void merge(int[] array,int left,int mid,int right){
+		int size=(right-left)+1;
+		int low=left;
+		int high=mid+1;
+		int[] tempArray=new int[size];
+		for (int i=0;i<size;i++){
+			if (low>mid){
+				tempArray[i]=array[high];
+				high++;
+				continue;
+			}
+
+			if (high>right){
+				tempArray[i]=array[low];
+				low++;
+				continue;
+			}
+
+			if (array[low]<=array[high]){
+				tempArray[i]=array[low];
+				low++;
+			}else{
+				tempArray[i]=array[high];
+				high++;
+			}
+		}
+
+		for (int i:tempArray){
+			array[left]=i;
+			left++;
+		}
+	}
 }
+
 
