@@ -2,6 +2,14 @@
  * @author Zhiyong
  */
 public class StackAndQueue {
+	public static ArrayStack getArrayStack(int i){
+		return new ArrayStack(i);
+	}
+
+	public static LinkedListStack getLinkedListStack(){
+		return new LinkedListStack();
+	}
+
 }
 
 class ArrayStack{
@@ -59,7 +67,7 @@ class LinkedListStack{
 	private StackNode top;
 	private int nodeAmount=0;
 
-	void push(String value){
+	public void push(String value){
 		StackNode node=new StackNode(value);
 		if(nodeAmount==0){
 			top=node;
@@ -71,7 +79,7 @@ class LinkedListStack{
 		nodeAmount++;
 	}
 
-	String pop(){
+	public String pop(){
 		if (nodeAmount==0){
 			System.out.println("Stack underflow");
 			return null;
@@ -83,7 +91,7 @@ class LinkedListStack{
 		return value;
 	}
 
-	int getNodeAmount(){
+	public int getNodeAmount(){
 		return nodeAmount;
 	}
 	private static class StackNode{

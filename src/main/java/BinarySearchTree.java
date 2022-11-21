@@ -1,5 +1,5 @@
 public class BinarySearchTree {
-	 TreeNode root;
+	 public TreeNode root;
 
 	public boolean insert(int value,String info){
 		if (root==null){
@@ -32,7 +32,7 @@ public class BinarySearchTree {
 		}
 	}
 
-	String query(int value){
+	public String query(int value){
 		TreeNode current=root;
 		while(current!=null){
 			if (value<current.value){

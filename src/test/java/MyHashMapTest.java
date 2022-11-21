@@ -1,8 +1,6 @@
+import MyHashMap;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Map;
-import java.util.Set;
 
 public class MyHashMapTest {
 	MyHashMap<String,Integer> myHashMap;

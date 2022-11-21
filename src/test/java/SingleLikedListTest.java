@@ -1,7 +1,6 @@
+import SingleLinkedList;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.sql.Array;
 
 public class SingleLikedListTest {
     SingleLinkedList list;

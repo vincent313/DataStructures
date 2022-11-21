@@ -1,5 +1,3 @@
-
-
 public class SingleLinkedList {
     ListNode head;
     ListNode tail;
