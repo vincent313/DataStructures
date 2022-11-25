@@ -187,6 +187,10 @@ class LinkedListQueue{
 		nodeAmount--;
 		return s;
 	}
+
+	boolean isEmpty(){
+		return nodeAmount==0;
+	}
 	private static class QueueNode{
 		QueueNode nextNode;
 		String value;

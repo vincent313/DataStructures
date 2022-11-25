@@ -3,11 +3,18 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public interface Graph {
-	/**add node to */
-	public void addNode(String nodeName);
-	public void addEdge(String node,String node2,int value);
-	public void deepFirstTraverse(String node);
+/**
+ * @author Zhiyong
+ */
+interface Graph {
+	/**add node to
+	 * @return void
+	 * @param nodeName
+	 * */
+	 void addNode(String nodeName);
+	 void addEdge(String node,String node2,int value);
+	 void deepFirstTraverse(String node);
+	 void breadthFirstSearch(String node);
 }
 
 class GraphImplementByArray implements Graph{
@@ -78,6 +85,34 @@ class GraphImplementByArray implements Graph{
 				deepFirstTraverse(dictionaryVK.get(i));
 			}
 		}
+	}
+
+	@Override
+	public void breadthFirstSearch(String node) {
+		if (!dictonary.containsKey(node)){
+			System.out.println("Node doesn't exist");
+			return;
+		}
+
+		LinkedListQueue queue=new LinkedListQueue();
+		queue.enqueue(node);
+		dfsSet.add(node);
+		while(!queue.isEmpty()){
+			String s=queue.dequeue();
+			System.out.println("Node->"+s);
+			int index=dictonary.get(s);
+			for (int i=0;i<size;i++){
+				if (graph[index][i]!=-1){
+					if (dfsSet.contains(dictionaryVK.get(i))){
+						continue;
+					}else {
+						dfsSet.add(dictionaryVK.get(i));
+						queue.enqueue(dictionaryVK.get(i));
+					}
+				}
+			}
+		}
+		System.out.println("Finish graph traverse");
 	}
 }
 

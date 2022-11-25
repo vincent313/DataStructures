@@ -1,9 +1,11 @@
+import org.junit.Before;
 import org.junit.Test;
 
 public class GraphTest {
-	@Test
+	Graph graph;
+	@Before
 	public void graphArrayTest(){
-		Graph graph=new GraphImplementByArray(8);
+		 graph=new GraphImplementByArray(8);
 		graph.addNode("v1");
 		graph.addNode("v2");
 		graph.addNode("v3");
@@ -28,9 +30,17 @@ public class GraphTest {
 		graph.addEdge("v3","v6",1);
 		graph.addEdge("v7","v3",1);
 		graph.addEdge("v3","v7",1);
+		//graph.addEdge("v9","v7",1);
+	//	graph.addEdge("v1","v10",1);
 
-		graph.addEdge("v9","v7",1);
-		graph.addEdge("v1","v10",1);
+	}
+	@Test
+	public void graphDeepFirstTraverse(){
 		graph.deepFirstTraverse("v1");
+	}
+
+	@Test
+	public void graphBreathFirstSearch(){
+		graph.breadthFirstSearch("v1");
 	}
 }
