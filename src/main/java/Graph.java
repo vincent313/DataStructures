@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Zhiyong
@@ -113,6 +110,82 @@ class GraphImplementByArray implements Graph{
 			}
 		}
 		System.out.println("Finish graph traverse");
+	}
+}
+
+class GraphImplementByLinkedList{
+	Map<String,Vertex> vertexMap;
+	Set<Vertex> dstSet;
+	GraphImplementByLinkedList(){
+		this.vertexMap=new HashMap<String,Vertex>();
+		dstSet=new HashSet<Vertex>();
+	}
+	void addVertex(String vertexName){
+		if (vertexMap.containsKey(vertexName)){
+			System.out.println("Vertex already exist");
+			return;
+		}
+
+		vertexMap.put(vertexName,new Vertex(vertexName));
+	}
+
+	void addEdge(String source,String destination,int weight){
+		if (!vertexMap.containsKey(source)||!vertexMap.containsKey(destination)){
+			System.out.println("Vertex doesn't exist");
+			return;
+		}
+
+		vertexMap.get(source).addEdge(vertexMap.get(destination),weight);
+	}
+
+	void deepFirstSearch(String s){
+
+		Vertex vertex=vertexMap.get(s);
+		if (vertex==null){
+			System.out.println("vertex doesn't exist");
+			return;
+		}
+
+		if (dstSet.contains(vertex)){return;}
+		dstSet.add(vertex);
+		System.out.println("vertex->"+vertex.vertexName);
+		for (Edge e:vertex.edgeList){
+			deepFirstSearch(e.getDestination().getVertexName());
+		}
+	}
+	class Vertex{
+		String vertexName;
+		ArrayList<Edge> edgeList;
+		Vertex(String vertexName){
+			this.vertexName=vertexName;
+			this.edgeList=new ArrayList<Edge>();
+		}
+
+		void addEdge(Vertex destination,int weight){
+			edgeList.add(new Edge(destination,weight));
+		}
+
+		String getVertexName(){
+			return vertexName;
+		}
+
+	}
+	class Edge{
+		Vertex destination;
+		int weight;
+
+		Edge(Vertex destination,int weight){
+			this.destination=destination;
+			this.weight=weight;
+		}
+
+		int getWeight(){
+			return weight;
+		}
+
+		Vertex getDestination(){
+			return destination;
+		}
 	}
 }
 
