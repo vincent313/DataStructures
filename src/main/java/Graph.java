@@ -153,6 +153,27 @@ class GraphImplementByLinkedList{
 			deepFirstSearch(e.getDestination().getVertexName());
 		}
 	}
+
+	void breadthFirstSearch(String s){
+	LinkedListQueue queue=new LinkedListQueue();
+	Vertex vertex=vertexMap.get(s);
+	dstSet.add(vertex);
+	if (s==null){return;}
+	queue.enqueue(vertex.getVertexName());
+	while (!queue.isEmpty()){
+		String s1=queue.dequeue();
+		System.out.println("vertex->"+s1);
+		Vertex v=vertexMap.get(s1);
+		ArrayList<Edge> list=v.edgeList;
+		for (Edge l:list){
+			if (dstSet.contains(l.destination)){
+				continue;
+			}
+			dstSet.add(l.destination);
+			queue.enqueue(l.destination.getVertexName());
+		}
+	}
+	}
 	class Vertex{
 		String vertexName;
 		ArrayList<Edge> edgeList;

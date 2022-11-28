@@ -67,6 +67,10 @@ public class GraphTest {
 		g.addEdge("v3","v6",1);
 		g.addEdge("v7","v3",1);
 		g.addEdge("v3","v7",1);
+		System.out.println("--------Deep first search--------");
 		g.deepFirstSearch("v1");
+		g.dstSet.clear();
+		System.out.println("--------Breadth first search--------");
+		g.breadthFirstSearch("v1");
 	}
 }
